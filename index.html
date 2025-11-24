@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Golden Electric Dry Cleaners</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 12px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #c89121; /* golden accent */
+    }
+
+    .brand-subtitle {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: #444;
+      text-align: right;
+    }
+
+    h2.section-title {
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      color: #0f3157; /* dark blue */
+      border-left: 4px solid #c89121;
+      padding-left: 8px;
+    }
+
+    .info-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    .info-bar span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background-color: #0f3157;
+      color: #fff;
+    }
+
+    /* Price table */
+    .table-wrapper {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    th {
+      background-color: #0f3157;
+      color: #fff;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #fafafa;
+    }
+
+    .price {
+      font-weight: 600;
+      color: #0f3157;
+      white-space: nowrap;
+    }
+
+    /* Store cards */
+    .stores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .store-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px 14px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      border-top: 3px solid #c89121;
+    }
+
+    .store-name {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #0f3157;
+    }
+
+    .store-meta {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .store-meta span {
+      display: block;
+    }
+
+    .store-actions {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid #0f3157;
+      color: #0f3157;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #0f3157;
+      color: #fff;
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    /* QR section (optional on the page) */
+    .qr-section {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .qr-section img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .qr-text {
+      font-size: 0.9rem;
+      color: #555;
+      max-width: 360px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: #777;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .tagline {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-title">Golden Electric Dry Cleaners</div>
+        <div class="brand-subtitle">Professional Dry Cleaning</div>
+      </div>
+      <div class="tagline">
+        <span class="badge">ALL HOUSE CLOTHING*</span><br />
+        Trusted care for your garments
+      </div>
+    </header>
+
+    <!-- Services & Price List -->
+    <section>
+      <h2 class="section-title">Services & Price List</h2>
+      <div class="info-bar">
+        <span>✔ All prices in INR (₹)</span>
+        <span>✔ GST extra if applicable</span>
+        <span>✔ Bulk & corporate discounts available</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Cloth Type</th>
+              <th>Service</th>
+              <th>Description</th>
+              <th>Price (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Shirt</td>
+              <td>Wash & Iron</td>
+              <td>Regular office & casual shirts</td>
+              <td class="price">40</td>
+            </tr>
+            <tr>
+              <td>Shirt</td>
+              <td>Dry Clean</td>
+              <td>Premium shirts / delicate fabric</td>
+              <td class="price">70</td>
+            </tr>
+            <tr>
+              <td>Trousers / Pants</td>
+              <td>Dry Clean</td>
+              <td>Formal trousers, office wear</td>
+              <td class="price">90</td>
+            </tr>
+            <tr>
+              <td>Saree (Normal)</td>
+              <td>Dry Clean</td>
+              <td>Regular sarees (cotton, synthetic)</td>
+              <td class="price">150</td>
+            </tr>
+            <tr>
+              <td>Saree (Silk / Designer)</td>
+              <td>Premium Dry Clean</td>
+              <td>Silk, heavy work, designer sarees</td>
+              <td class="price">250</td>
+            </tr>
+            <tr>
+              <td>Suit (2-piece)</td>
+              <td>Dry Clean</td>
+              <td>Blazer + trouser</td>
+              <td class="price">350</td>
+            </tr>
+            <tr>
+              <td>Blanket (Single)</td>
+              <td>Wash & Dry</td>
+              <td>Single size blankets</td>
+              <td class="price">200</td>
+            </tr>
+            <tr>
+              <td>Blanket (Double)</td>
+              <td>Wash & Dry</td>
+              <td>Double & heavy blankets</td>
+              <td class="price">280</td>
+            </tr>
+            <tr>
+              <td>Curtains (per panel)</td>
+              <td>Wash & Iron</td>
+              <td>Window & door curtains</td>
+              <td class="price">120</td>
+            </tr>
+            <tr>
+              <td>Other Items</td>
+              <td>On Request</td>
+              <td>Lehanga, Sherwani, Wedding outfits etc.</td>
+              <td class="price">As per inspection</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">
+        *Same-day / express delivery subject to store cut-off time and garment type.
+      </p>
+    </section>
+
+    <!-- Store Details & Contacts -->
+    <section>
+      <h2 class="section-title">Our Stores & Contact Details</h2>
+      <p style="font-size:0.9rem; color:#555; margin-bottom:8px;">
+        Choose the branch closest to you. Call or WhatsApp us for pickup & delivery.
+      </p>
+
+      <div class="stores-grid">
+        <!-- Store 1 -->
+        <div class="store-card">
+          <div class="store-name">Golden Electric Dry Cleaners - Main Branch</div>
+          <div class="store-meta">
+            <span><strong>Address:</strong> 123 ABC Road, Near XYZ Circle, Hyderabad</span>
+            <span><strong>Phone:</strong> <a href="tel:+910000000000">+91 00000 00000</a></span>
+            <span><strong>WhatsApp:</strong> <a href="https://wa.me/910000000000" target="_blank">Chat on WhatsApp</a></span>
+            <span><strong>Timings:</strong> 9:00 AM – 9:00 PM (All days)</span>
+          </div>
+          <div class="store-actions">
+            <a class="btn btn-primary" href="tel:+910000000000">Call Now</a>
+            <a class="btn" href="https://wa.me/910000000000" target="_blank">WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- Store 2 -->
+        <div class="store-card">
+          <div class="store-name">Golden Electric Dry Cleaners - Branch 2</div>
+          <div class="store-meta">
+            <span><strong>Address:</strong> 45 Market Street, Near Bus Stand, Hyderabad</span>
+            <span><strong>Phone:</strong> <a href="tel:+910000000001">+91 00000 00001</a></span>
+            <span><strong>WhatsApp:</strong> <a href="https://wa.me/910000000001" target="_blank">Chat on WhatsApp</a></span>
+            <span><strong>Timings:</strong> 9:00 AM – 9:30 PM (All days)</span>
+          </div>
+          <div class="store-actions">
+            <a class="btn btn-primary" href="tel:+910000000001">Call Now</a>
+            <a class="btn" href="https://wa.me/910000000001" target="_blank">WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- Add more store-card blocks for more branches -->
+      </div>
+    </section>
+
+    <!-- Optional QR preview on the page itself -->
+    <section class="qr-section">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://your-final-website-url.com"
+        alt="Golden Electric Dry Cleaners QR" />
+      <div class="qr-text">
+        Scan this QR code to view our full price list, services, and contact details anytime.
+        <br /><br />
+        Replace <code>https://your-final-website-url.com</code> in the image URL with your actual website link once hosted.
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Golden Electric Dry Cleaners. All Rights Reserved.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
